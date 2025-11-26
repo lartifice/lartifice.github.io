@@ -53,7 +53,7 @@
     }
 
     .emoji {
-      font-style: normal;
+      font-style: normal; /* pas italique */
     }
   </style>
 </head>
@@ -86,7 +86,7 @@
       const contactLink = document.getElementById("contact-link");
       const status = document.getElementById("copy-status");
 
-      // Palette de couleurs fluo rétro (+ bleu ajouté)
+      // Palette fluo rétro (+ bleu ajouté)
       const colors = [
         "#ffff00", // jaune néon
         "#00ffff", // cyan
@@ -97,8 +97,18 @@
         "#1f51ff"  // bleu rétro fluo
       ];
 
+      let lastColor = null;
+
       function randomColor() {
-        return colors[Math.floor(Math.random() * colors.length)];
+        let newColor = colors[Math.floor(Math.random() * colors.length)];
+
+        // jamais la même couleur deux fois d’affilée
+        while (newColor === lastColor) {
+          newColor = colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        lastColor = newColor;
+        return newColor;
       }
 
       contactLink.addEventListener("click", function (e) {
@@ -119,10 +129,11 @@
         function showMessage() {
           status.style.opacity = 1;
 
-          // Couleur aléatoire à chaque clic
+          // Couleur aléatoire (jamais identique à la précédente)
           status.style.color = randomColor();
 
-status.innerHTML = "𝐥.𝐚𝐫𝐭𝐢𝐟𝐢𝐜𝐞@𝐩𝐫𝐨𝐭𝐨𝐧𝐦𝐚𝐢𝐥.𝐜𝐨𝐦 – 𝐜𝐨𝐩𝐢𝐞𝐝 𝐭𝐨 𝐜𝐥𝐢𝐩𝐛𝐨𝐚𝐫𝐝 <span class='emoji'>📫</span>";
+          status.innerHTML =
+            "𝐥.𝐚𝐫𝐭𝐢𝐟𝐢𝐜𝐞@𝐩𝐫𝐨𝐭𝐨𝐧𝐦𝐚𝐢𝐥.𝐜𝐨𝐦 – 𝐜𝐨𝐩𝐢𝐞𝐝 𝐭𝐨 𝐜𝐥𝐢𝐩𝐛𝐨𝐚𝐫𝐝 <span class='emoji'>📫</span>";
 
           // Durée d’affichage = 5 secondes
           setTimeout(() => {
