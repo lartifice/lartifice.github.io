@@ -43,13 +43,12 @@
       text-decoration: underline;
     }
 
-    /* message temporaire */
     .status {
       margin-bottom: 16px;
       font-size: 0.85rem;
       font-style: italic;
       text-transform: lowercase;
-      color: #ffe100; /* jaune pétant rétro */
+      color: #ffe100;
       min-height: 1.2em;
       transition: opacity 0.4s ease;
     }
@@ -101,7 +100,7 @@
 
         function showMessage() {
           status.style.opacity = 1;
-          status.textContent = email + " – copied to clipboard";
+          status.textContent = email + " – copied to clipboard 📫";
 
           setTimeout(() => {
             status.style.opacity = 0;
