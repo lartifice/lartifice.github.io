@@ -23,6 +23,7 @@
     img {
       max-width: 280px;
       margin-bottom: 16px;
+      cursor: pointer;
     }
 
     /* petit texte modeste sous le GIF */
@@ -33,6 +34,7 @@
       font-weight: 400;
       line-height: 1.35;
       color: #bdbdbd;
+      display: none; /* caché par défaut */
     }
 
     ul {
@@ -73,9 +75,9 @@
 
   <div class="container">
 
-    <img src="lartifice.gif" alt="Feu d’artifice">
+    <img id="artifice-gif" src="lartifice.gif" alt="Feu d’artifice">
 
-    <p class="about">
+    <p class="about" id="about-text">
       L’ARTIFICE is a Geneva-based association for independent cinema, offering support for film projects and accessible post-production services (editing and color grading).
     </p>
 
@@ -152,6 +154,37 @@
             }, 400);
           }, 5000);
         }
+      });
+
+      // --- LOGIQUE POUR LE TEXTE "ABOUT" SOUS LE GIF ---
+
+      const gif = document.getElementById("artifice-gif");
+      const about = document.getElementById("about-text");
+
+      let aboutPinned = false;
+      let isHoveringGif = false;
+
+      function updateAboutVisibility() {
+        if (aboutPinned || isHoveringGif) {
+          about.style.display = "block";
+        } else {
+          about.style.display = "none";
+        }
+      }
+
+      gif.addEventListener("mouseenter", function () {
+        isHoveringGif = true;
+        updateAboutVisibility();
+      });
+
+      gif.addEventListener("mouseleave", function () {
+        isHoveringGif = false;
+        updateAboutVisibility();
+      });
+
+      gif.addEventListener("click", function () {
+        aboutPinned = !aboutPinned; // clic = toggle
+        updateAboutVisibility();
       });
     })();
   </script>
