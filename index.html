@@ -20,38 +20,37 @@
       text-align: center;
       padding: 32px;
       max-width: 520px;
-      position: relative; /* IMPORTANT pour le texte en absolu */
     }
 
     img {
       max-width: 280px;
-      margin-bottom: 40px;
+      margin-bottom: 8px;
       cursor: pointer;
     }
 
-    /* TEXTE CONTEXTUEL SOUS LE GIF (NE DÉCALE RIEN) */
-    .about {
-      position: absolute;
-      top: 290px; /* ajustable si tu veux plus/moins bas */
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      max-width: 520px;
+    /* ZONE RÉSERVÉE POUR LE TEXTE */
+    .about-wrapper {
+      height: 80px; /* espace toujours réservé */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
+    .about {
       font-size: 0.8rem;
       font-style: italic;
       font-weight: 400;
       line-height: 1.35;
       color: #bdbdbd;
-
-      display: none;
-      pointer-events: none; /* on ne peut pas cliquer dessus */
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
     }
 
     ul {
       list-style: none;
       padding: 0;
-      margin: 0;
+      margin: 30px 0 0 0; /* les liens sont bien plus bas */
     }
 
     li {
@@ -91,9 +90,11 @@
 
     <img id="artifice-gif" src="lartifice.gif" alt="Feu d’artifice">
 
-    <p class="about" id="about-text">
-      L’ARTIFICE is a Geneva-based association for independent cinema, offering support for film projects and accessible post-production services (editing and color grading).
-    </p>
+    <div class="about-wrapper">
+      <p class="about" id="about-text">
+        L’ARTIFICE is a Geneva-based association for independent cinema, offering support for film projects and accessible post-production services (editing and color grading).
+      </p>
+    </div>
 
     <div id="copy-status" class="status"></div>
 
@@ -170,7 +171,7 @@
         }
       });
 
-      // ----- TEXTE "ABOUT" : hover + click toggle -----
+      // ----- TEXTE ABOUT : hover + click toggle -----
 
       const gif = document.getElementById("artifice-gif");
       const about = document.getElementById("about-text");
@@ -180,9 +181,9 @@
 
       function updateAboutVisibility() {
         if (aboutPinned || isHoveringGif) {
-          about.style.display = "block";
+          about.style.opacity = 1;
         } else {
-          about.style.display = "none";
+          about.style.opacity = 0;
         }
       }
 
