@@ -43,19 +43,17 @@
       text-decoration: underline;
     }
 
-    /* message temporaire */
     .status {
       margin-bottom: 16px;
       font-size: 0.85rem;
       font-style: italic;
       text-transform: lowercase;
-      color: #ffff00; /* le jaune RAL proche 1026 */
       min-height: 1.2em;
       transition: opacity 0.4s ease;
     }
 
     .emoji {
-      font-style: normal; /* pas italique */
+      font-style: normal;
     }
   </style>
 </head>
@@ -88,6 +86,18 @@
       const contactLink = document.getElementById("contact-link");
       const status = document.getElementById("copy-status");
 
+      // Palette de couleurs rétro / fluo
+      const colors = [
+        "#ffff00", // jaune néon
+        "#00ffff", // cyan
+        "#ff00ff", // magenta
+        "#39ff14", // vert néon
+        "#ff3131", // rouge néon
+        "#ff6ec7"  // rose rétro
+      ];
+
+      let colorIndex = 0;
+
       contactLink.addEventListener("click", function (e) {
         e.preventDefault();
 
@@ -104,6 +114,10 @@
         }
 
         function showMessage() {
+          // Change de couleur à chaque clic
+          status.style.color = colors[colorIndex];
+          colorIndex = (colorIndex + 1) % colors.length;
+
           status.style.opacity = 1;
           status.innerHTML = email + " – copied to clipboard <span class='emoji'>📫</span>";
 
