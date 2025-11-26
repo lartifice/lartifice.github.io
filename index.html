@@ -53,7 +53,7 @@
     }
 
     .emoji {
-      font-style: normal; /* pas italique */
+      font-style: normal;
     }
   </style>
 </head>
@@ -86,14 +86,15 @@
       const contactLink = document.getElementById("contact-link");
       const status = document.getElementById("copy-status");
 
-      // palette de couleurs fluo aléatoires
+      // Palette de couleurs fluo rétro (+ bleu ajouté)
       const colors = [
         "#ffff00", // jaune néon
         "#00ffff", // cyan
         "#ff00ff", // magenta
         "#39ff14", // vert néon
         "#ff3131", // rouge néon
-        "#ff6ec7"  // rose rétro
+        "#ff6ec7", // rose rétro
+        "#1f51ff"  // bleu rétro fluo
       ];
 
       function randomColor() {
@@ -123,13 +124,14 @@
 
           status.innerHTML = email + " – copied to clipboard <span class='emoji'>📫</span>";
 
+          // Durée d’affichage = 5 secondes
           setTimeout(() => {
             status.style.opacity = 0;
             setTimeout(() => {
               status.textContent = "";
               status.style.opacity = 1;
             }, 400);
-          }, 2000);
+          }, 5000);
         }
       });
     })();
