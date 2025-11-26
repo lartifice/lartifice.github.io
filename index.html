@@ -36,12 +36,18 @@
       color: #ffffff; /* blanc */
       font-size: 1.1rem;
       letter-spacing: 0.12em;
+      text-transform: uppercase; /* MAJUSCULES */
+      cursor: pointer;
     }
     a:hover {
       text-decoration: underline;
     }
-    .upper {
-      text-transform: uppercase; /* MAJUSCULES */
+    .status {
+      margin-top: 16px;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888888;
     }
   </style>
 </head>
@@ -53,19 +59,56 @@
 
     <ul>
       <li>
-        <a class="upper" href="mailto:l.artifice@protonmail.com">
+        <a id="contact-link">
           Contact
         </a>
       </li>
 
       <li>
-        <a class="upper" href="https://www.swissfilms.ch/fr/company/l-artifice/c49ac503a7e94294bfc9ea440084433c" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.swissfilms.ch/fr/company/l-artifice/c49ac503a7e94294bfc9ea440084433c"
+           target="_blank" rel="noopener noreferrer">
           Films
         </a>
       </li>
     </ul>
 
+    <div id="copy-status" class="status"></div>
+
   </div>
+
+  <script>
+    (function () {
+      const email = "l.artifice@protonmail.com";
+      const contactLink = document.getElementById("contact-link");
+      const status = document.getElementById("copy-status");
+
+      contactLink.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        // Tentative avec l'API clipboard moderne
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email).then(function () {
+            status.textContent = email.toUpperCase() + " – COPIED TO CLIPBOARD";
+          }).catch(function () {
+            status.textContent = email.toUpperCase();
+          });
+        } else {
+          // Fallback pour vieux navigateurs
+          const tempInput = document.createElement("input");
+          tempInput.value = email;
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          try {
+            document.execCommand("copy");
+            status.textContent = email.toUpperCase() + " – COPIED TO CLIPBOARD";
+          } catch (err) {
+            status.textContent = email.toUpperCase();
+          }
+          document.body.removeChild(tempInput);
+        }
+      });
+    })();
+  </script>
 
 </body>
 </html>
