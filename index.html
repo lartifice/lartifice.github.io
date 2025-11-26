@@ -7,8 +7,8 @@
   <style>
     body {
       margin: 0;
-      background: #0b0b0f;
-      color: #fff;
+      background: #000000; /* noir absolu */
+      color: #ffffff;
       font-family: system-ui, -apple-system, sans-serif;
       display: flex;
       align-items: center;
@@ -21,7 +21,7 @@
     }
     img {
       max-width: 280px;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
     ul {
       list-style: none;
@@ -29,15 +29,19 @@
       margin: 0;
     }
     li {
-      margin: 8px 0;
+      margin: 14px 0;
     }
     a {
       text-decoration: none;
-      color: #ffdf6b;
+      color: #ffffff; /* blanc */
       font-size: 1.1rem;
+      letter-spacing: 0.12em;
     }
     a:hover {
       text-decoration: underline;
+    }
+    .upper {
+      text-transform: uppercase; /* MAJUSCULES */
     }
   </style>
 </head>
@@ -48,11 +52,17 @@
     <img src="lartifice.gif" alt="Feu d’artifice">
 
     <ul>
-      <!-- remplace les liens plus tard si tu veux -->
-      <li><a href="#" target="_blank">Small Talk</a></li>
-      <li><a href="#" target="_blank">Camp d’été</a></li>
-      <li><a href="#" target="_blank">Over Our Hills</a></li>
-      <li><a href="#" target="_blank">LUX</a></li>
+      <li>
+        <a class="upper" href="mailto:l.artifice@protonmail.com">
+          Contact
+        </a>
+      </li>
+
+      <li>
+        <a class="upper" href="https://www.swissfilms.ch/fr/company/l-artifice/c49ac503a7e94294bfc9ea440084433c" target="_blank" rel="noopener noreferrer">
+          Films
+        </a>
+      </li>
     </ul>
 
   </div>
