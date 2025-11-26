@@ -53,7 +53,7 @@
     }
 
     .emoji {
-      font-style: normal;
+      font-style: normal; /* pas italique */
     }
   </style>
 </head>
@@ -86,7 +86,7 @@
       const contactLink = document.getElementById("contact-link");
       const status = document.getElementById("copy-status");
 
-      // Palette de couleurs rétro / fluo
+      // palette de couleurs fluo aléatoires
       const colors = [
         "#ffff00", // jaune néon
         "#00ffff", // cyan
@@ -96,7 +96,9 @@
         "#ff6ec7"  // rose rétro
       ];
 
-      let colorIndex = 0;
+      function randomColor() {
+        return colors[Math.floor(Math.random() * colors.length)];
+      }
 
       contactLink.addEventListener("click", function (e) {
         e.preventDefault();
@@ -114,11 +116,11 @@
         }
 
         function showMessage() {
-          // Change de couleur à chaque clic
-          status.style.color = colors[colorIndex];
-          colorIndex = (colorIndex + 1) % colors.length;
-
           status.style.opacity = 1;
+
+          // Couleur aléatoire à chaque clic
+          status.style.color = randomColor();
+
           status.innerHTML = email + " – copied to clipboard <span class='emoji'>📫</span>";
 
           setTimeout(() => {
