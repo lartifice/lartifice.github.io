@@ -7,7 +7,7 @@
   <style>
     body {
       margin: 0;
-      background: #000000; /* noir absolu */
+      background: #000000;
       color: #ffffff;
       font-family: system-ui, -apple-system, sans-serif;
       display: flex;
@@ -33,21 +33,25 @@
     }
     a {
       text-decoration: none;
-      color: #ffffff; /* blanc */
+      color: #ffffff;
       font-size: 1.1rem;
       letter-spacing: 0.12em;
-      text-transform: uppercase; /* MAJUSCULES */
+      text-transform: uppercase;
       cursor: pointer;
     }
     a:hover {
       text-decoration: underline;
     }
+
+    /* message temporaire */
     .status {
-      margin-top: 16px;
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #888888;
+      margin-bottom: 16px;
+      font-size: 0.85rem;
+      font-style: italic;
+      text-transform: lowercase;
+      color: #ffdf6b; /* jaune */
+      min-height: 1.2em;
+      transition: opacity 0.4s ease;
     }
   </style>
 </head>
@@ -57,11 +61,11 @@
 
     <img src="lartifice.gif" alt="Feu d’artifice">
 
+    <div id="copy-status" class="status"></div>
+
     <ul>
       <li>
-        <a id="contact-link">
-          Contact
-        </a>
+        <a id="contact-link">Contact</a>
       </li>
 
       <li>
@@ -71,8 +75,6 @@
         </a>
       </li>
     </ul>
-
-    <div id="copy-status" class="status"></div>
 
   </div>
 
@@ -85,26 +87,29 @@
       contactLink.addEventListener("click", function (e) {
         e.preventDefault();
 
-        // Tentative avec l'API clipboard moderne
         if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(email).then(function () {
-            status.textContent = email.toUpperCase() + " – COPIED TO CLIPBOARD";
-          }).catch(function () {
-            status.textContent = email.toUpperCase();
-          });
+          navigator.clipboard.writeText(email).then(showMessage).catch(showMessage);
         } else {
-          // Fallback pour vieux navigateurs
           const tempInput = document.createElement("input");
           tempInput.value = email;
           document.body.appendChild(tempInput);
           tempInput.select();
-          try {
-            document.execCommand("copy");
-            status.textContent = email.toUpperCase() + " – COPIED TO CLIPBOARD";
-          } catch (err) {
-            status.textContent = email.toUpperCase();
-          }
+          try { document.execCommand("copy"); } catch(e){}
           document.body.removeChild(tempInput);
+          showMessage();
+        }
+
+        function showMessage() {
+          status.style.opacity = 1;
+          status.textContent = email + " – copied to clipboard";
+
+          setTimeout(() => {
+            status.style.opacity = 0;
+            setTimeout(() => {
+              status.textContent = "";
+              status.style.opacity = 1;
+            }, 400);
+          }, 2000);
         }
       });
     })();
