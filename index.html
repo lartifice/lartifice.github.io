@@ -43,14 +43,19 @@
       text-decoration: underline;
     }
 
+    /* message temporaire */
     .status {
       margin-bottom: 16px;
       font-size: 0.85rem;
       font-style: italic;
       text-transform: lowercase;
-      color: #ffe100;
+      color: #ffec00; /* jaune RAL proche 1026 */
       min-height: 1.2em;
       transition: opacity 0.4s ease;
+    }
+
+    .emoji {
+      font-style: normal; /* pas italique */
     }
   </style>
 </head>
@@ -100,7 +105,7 @@
 
         function showMessage() {
           status.style.opacity = 1;
-          status.textContent = email + " – copied to clipboard 📫";
+          status.innerHTML = email + " – copied to clipboard <span class='emoji'>📫</span>";
 
           setTimeout(() => {
             status.style.opacity = 0;
