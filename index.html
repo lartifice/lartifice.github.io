@@ -18,11 +18,23 @@
     .container {
       text-align: center;
       padding: 32px;
+      max-width: 520px;
     }
     img {
       max-width: 280px;
-      margin-bottom: 40px;
+      margin-bottom: 16px;
     }
+
+    /* petit texte modeste sous le GIF */
+    .about {
+      margin: 0 0 28px 0;
+      font-size: 0.8rem;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.35;
+      color: #bdbdbd;
+    }
+
     ul {
       list-style: none;
       padding: 0;
@@ -53,7 +65,7 @@
     }
 
     .emoji {
-      font-style: normal; /* pas italique */
+      font-style: normal;
     }
   </style>
 </head>
@@ -62,6 +74,10 @@
   <div class="container">
 
     <img src="lartifice.gif" alt="Feu d’artifice">
+
+    <p class="about">
+      L’ARTIFICE is a Geneva-based association for independent cinema, offering support for film projects and accessible post-production services (editing and color grading).
+    </p>
 
     <div id="copy-status" class="status"></div>
 
@@ -86,7 +102,6 @@
       const contactLink = document.getElementById("contact-link");
       const status = document.getElementById("copy-status");
 
-      // Palette fluo rétro (+ bleu ajouté)
       const colors = [
         "#ffff00", // jaune néon
         "#00ffff", // cyan
@@ -101,12 +116,9 @@
 
       function randomColor() {
         let newColor = colors[Math.floor(Math.random() * colors.length)];
-
-        // jamais la même couleur deux fois d’affilée
         while (newColor === lastColor) {
           newColor = colors[Math.floor(Math.random() * colors.length)];
         }
-
         lastColor = newColor;
         return newColor;
       }
@@ -128,14 +140,10 @@
 
         function showMessage() {
           status.style.opacity = 1;
-
-          // Couleur aléatoire (jamais identique à la précédente)
           status.style.color = randomColor();
-
           status.innerHTML =
             "𝐥.𝐚𝐫𝐭𝐢𝐟𝐢𝐜𝐞@𝐩𝐫𝐨𝐭𝐨𝐧𝐦𝐚𝐢𝐥.𝐜𝐨𝐦 – 𝐜𝐨𝐩𝐢𝐞𝐝 𝐭𝐨 𝐜𝐥𝐢𝐩𝐛𝐨𝐚𝐫𝐝 <span class='emoji'>📫</span>";
 
-          // Durée d’affichage = 5 secondes
           setTimeout(() => {
             status.style.opacity = 0;
             setTimeout(() => {
