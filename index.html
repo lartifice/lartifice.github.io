@@ -15,26 +15,37 @@
       justify-content: center;
       min-height: 100vh;
     }
+
     .container {
       text-align: center;
       padding: 32px;
       max-width: 520px;
+      position: relative; /* IMPORTANT pour le texte en absolu */
     }
+
     img {
       max-width: 280px;
-      margin-bottom: 16px;
+      margin-bottom: 40px;
       cursor: pointer;
     }
 
-    /* petit texte modeste sous le GIF */
+    /* TEXTE CONTEXTUEL SOUS LE GIF (NE DÉCALE RIEN) */
     .about {
-      margin: 0 0 28px 0;
+      position: absolute;
+      top: 290px; /* ajustable si tu veux plus/moins bas */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 520px;
+
       font-size: 0.8rem;
       font-style: italic;
       font-weight: 400;
       line-height: 1.35;
       color: #bdbdbd;
-      display: none; /* caché par défaut */
+
+      display: none;
+      pointer-events: none; /* on ne peut pas cliquer dessus */
     }
 
     ul {
@@ -42,9 +53,11 @@
       padding: 0;
       margin: 0;
     }
+
     li {
       margin: 14px 0;
     }
+
     a {
       text-decoration: none;
       color: #ffffff;
@@ -53,6 +66,7 @@
       text-transform: uppercase;
       cursor: pointer;
     }
+
     a:hover {
       text-decoration: underline;
     }
@@ -105,13 +119,13 @@
       const status = document.getElementById("copy-status");
 
       const colors = [
-        "#ffff00", // jaune néon
-        "#00ffff", // cyan
-        "#ff00ff", // magenta
-        "#39ff14", // vert néon
-        "#ff3131", // rouge néon
-        "#ff6ec7", // rose rétro
-        "#1f51ff"  // bleu rétro fluo
+        "#ffff00",
+        "#00ffff",
+        "#ff00ff",
+        "#39ff14",
+        "#ff3131",
+        "#ff6ec7",
+        "#1f51ff"
       ];
 
       let lastColor = null;
@@ -156,7 +170,7 @@
         }
       });
 
-      // --- LOGIQUE POUR LE TEXTE "ABOUT" SOUS LE GIF ---
+      // ----- TEXTE "ABOUT" : hover + click toggle -----
 
       const gif = document.getElementById("artifice-gif");
       const about = document.getElementById("about-text");
@@ -183,7 +197,7 @@
       });
 
       gif.addEventListener("click", function () {
-        aboutPinned = !aboutPinned; // clic = toggle
+        aboutPinned = !aboutPinned;
         updateAboutVisibility();
       });
     })();
