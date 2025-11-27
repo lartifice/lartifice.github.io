@@ -13,7 +13,7 @@
     body {
       margin: 0;
       background: #000000;
-      color: #e6e6e6;
+      color: #ededed; /* blanc adouci */
       font-family: system-ui, -apple-system, sans-serif;
       display: flex;
       align-items: center;
@@ -41,7 +41,7 @@
       justify-content: center;
     }
 
-    /* STYLE TÉLÉTEXTE - DESCRIPTION */
+    /* STYLE TÉLÉTEXTE */
     .about {
       font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
       font-size: 0.72rem;
@@ -65,10 +65,10 @@
       margin: 14px 0;
     }
 
-    /* MENU EN MODE TÉLÉTEXTE AUSSI */
+    /* MENU STYLE TÉLÉTEXTE + COULEUR ADOUCIE */
     a {
       text-decoration: none;
-      color: #e6e6e6;
+      color: #ededed;
       font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
       font-size: 1.05rem;
       letter-spacing: 0.16em;
@@ -76,8 +76,17 @@
       cursor: pointer;
     }
 
-    a:hover {
-      text-decoration: underline;
+    /* ASTERISK AU SURVOL */
+    a::after {
+      content: "";
+      margin-left: 6px;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+    }
+
+    a:hover::after {
+      content: "*";
+      opacity: 1;
     }
 
     /* MESSAGE COPIED TO CLIPBOARD – juste au-dessus de CONTACT */
