@@ -22,14 +22,13 @@
       max-width: 520px;
     }
 
-    /* icône lettre */
     img {
-      width: 90px;
+      max-width: 280px;
       margin-bottom: 8px;
       cursor: pointer;
     }
 
-    /* zone réservée pour le texte sous l’icône */
+    /* ZONE RÉSERVÉE POUR LE TEXTE SOUS LE GIF */
     .about-wrapper {
       height: 80px;
       display: flex;
@@ -71,10 +70,10 @@
       text-decoration: underline;
     }
 
-    /* message "copied to clipboard" juste au-dessus de CONTACT */
+    /* MESSAGE COPIED TO CLIPBOARD – collé juste au-dessus de CONTACT */
     .status {
       margin-top: 0px;
-      margin-bottom: 4px;
+      margin-bottom: 4px; /* petit espace, collé à CONTACT */
       font-size: 0.85rem;
       font-style: italic;
       text-transform: lowercase;
@@ -82,7 +81,7 @@
       transition: opacity 0.4s ease;
     }
 
-    /* email non italique */
+    /* l'email en non-italique */
     .no-italic {
       font-style: normal;
     }
@@ -96,20 +95,16 @@
 
   <div class="container">
 
-    <!-- icône lettre -->
-    <img id="artifice-gif" src="lettre.png" alt="Mail icon">
+    <img id="artifice-gif" src="lartifice.gif" alt="Feu d’artifice">
 
-    <!-- about (hover + click sur l’icône) -->
     <div class="about-wrapper">
       <p class="about" id="about-text">
         L’ARTIFICE is a Geneva-based association for independent cinema, offering support for film projects and accessible post-production services (editing and color grading).
       </p>
     </div>
 
-    <!-- message copied to clipboard -->
     <div id="copy-status" class="status"></div>
 
-    <!-- liens -->
     <ul>
       <li>
         <a id="contact-link">Contact</a>
