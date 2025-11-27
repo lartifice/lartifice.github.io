@@ -63,6 +63,7 @@
 
     li {
       margin: 14px 0;
+      position: relative; /* pour positionner le status au-dessus sans bouger le reste */
     }
 
     /* MENU STYLE TÉLÉTEXTE */
@@ -76,29 +77,34 @@
       cursor: pointer;
     }
 
-    /* ASTERISK FIXE, SANS DÉPLACER LE TEXTE */
+    /* ASTERISK PETITE, EN HAUT, PLACE RESERVÉE */
     .asterisk {
       display: inline-block;
-      width: 0.9em;           /* réserve la place */
+      width: 0.6em;          /* réserve un peu de place pour éviter tout décalage */
       opacity: 0;
       transition: opacity 0.15s ease;
       font-family: ui-monospace, monospace;
-      font-size: 1.05rem;
+      font-size: 0.7em;      /* plus petite */
+      vertical-align: super; /* en haut */
     }
 
     a:hover .asterisk {
       opacity: 1;
     }
 
-    /* MESSAGE COPIED TO CLIPBOARD – juste au-dessus de CONTACT */
+    /* MESSAGE COPIED TO CLIPBOARD – ABSOLU AU-DESSUS DE CONTACT */
     .status {
-      margin-bottom: 4px;
+      position: absolute;
+      bottom: 100%;          /* juste au-dessus du li */
+      left: 50%;
+      transform: translateX(-50%);
       font-size: 0.85rem;
       font-style: italic;
       text-transform: lowercase;
-      min-height: 1.2em;
+      white-space: nowrap;
       transition: opacity 0.4s ease;
       pointer-events: none;
+      opacity: 0;
     }
 
     .no-italic {
@@ -180,8 +186,8 @@
         }
 
         function showMessage() {
-          status.style.opacity = 1;
           status.style.color = randomColor();
+          status.style.opacity = 1;
           status.innerHTML =
             "<span class='no-italic'>𝐥.𝐚𝐫𝐭𝐢𝐟𝐢𝐜𝐞@𝐩𝐫𝐨𝐭𝐨𝐧𝐦𝐚𝐢𝐥.𝐜𝐨𝐦</span> – 𝐜𝐨𝐩𝐢𝐞𝐝 𝐭𝐨 𝐜𝐥𝐢𝐩𝐛𝐨𝐚𝐫𝐝 " +
             "<img src='lettre1.png' style='height:18px; vertical-align:middle; margin-left:6px; position:relative; top:3px;' />";
@@ -190,7 +196,6 @@
             status.style.opacity = 0;
             setTimeout(() => {
               status.textContent = "";
-              status.style.opacity = 1;
             }, 400);
           }, 5000);
         }
