@@ -28,6 +28,7 @@
       cursor: pointer;
     }
 
+    /* ZONE RÉSERVÉE POUR LE TEXTE SOUS LE GIF */
     .about-wrapper {
       height: 80px;
       display: flex;
@@ -69,7 +70,7 @@
       text-decoration: underline;
     }
 
-    /* maintenant placé JUSTE AU-DESSUS de CONTACT */
+    /* MESSAGE COPIED TO CLIPBOARD – collé juste au-dessus de CONTACT */
     .status {
       margin-bottom: 4px;
       font-size: 0.85rem;
@@ -80,16 +81,12 @@
       pointer-events: none;
     }
 
+    /* l'email en non-italique */
     .no-italic {
-      font-style: normal;
-    }
-
-    .emoji {
       font-style: normal;
     }
   </style>
 </head>
-
 <body>
 
   <div class="container">
@@ -165,7 +162,7 @@
           status.style.opacity = 1;
           status.style.color = randomColor();
           status.innerHTML =
-            "<span class='no-italic'>𝐥.𝐚𝐫𝐭𝐢𝐟𝐢𝐜𝐞@𝐩𝐫𝐨𝐭𝐨𝐧𝐦𝐚𝐢𝐥.𝐜𝐨𝐦</span> – 𝐜𝐨𝐩𝐢𝐞𝐝 𝐭𝐨 𝐜𝐥𝐢𝐩𝐛𝐨𝐚𝐫𝐝 <span class='emoji'>✉</span>";
+            "<span class='no-italic'>𝐥.𝐚𝐫𝐭𝐢𝐟𝐢𝐜𝐞@𝐩𝐫𝐨𝐭𝐨𝐧𝐦𝐚𝐢𝐥.𝐜𝐨𝐦</span> – 𝐜𝐨𝐩𝐢𝐞𝐝 𝐭𝐨 𝐜𝐥𝐢𝐩𝐛𝐨𝐚𝐫𝐝 <img src='lettre.png' style='height:18px; vertical-align:middle; margin-left:6px;' />";
 
           setTimeout(() => {
             status.style.opacity = 0;
@@ -177,7 +174,8 @@
         }
       });
 
-      /* ABOUT : hover + click sur le GIF */
+      // ----- TEXTE ABOUT : hover + click toggle -----
+
       const gif = document.getElementById("artifice-gif");
       const about = document.getElementById("about-text");
 
