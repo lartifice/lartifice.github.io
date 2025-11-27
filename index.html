@@ -13,7 +13,7 @@
     body {
       margin: 0;
       background: #000000;
-      color: #ededed; /* blanc adouci */
+      color: #ededed;
       font-family: system-ui, -apple-system, sans-serif;
       display: flex;
       align-items: center;
@@ -65,8 +65,9 @@
       margin: 14px 0;
     }
 
-    /* MENU STYLE TÉLÉTEXTE + COULEUR ADOUCIE */
+    /* MENU STYLE TÉLÉTEXTE */
     a {
+      position: relative;
       text-decoration: none;
       color: #ededed;
       font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -76,16 +77,20 @@
       cursor: pointer;
     }
 
-    /* ASTERISK AU SURVOL */
+    /* ASTERISK EN POSITION ABSOLUE = PAS DE DEPLACEMENT */
     a::after {
-      content: "";
-      margin-left: 6px;
+      content: "*";
+      position: absolute;
+      right: -18px;
+      top: 50%;
+      transform: translateY(-50%);
       opacity: 0;
       transition: opacity 0.15s ease;
+      font-family: ui-monospace, monospace;
+      font-size: 1.1rem;
     }
 
     a:hover::after {
-      content: "*";
       opacity: 1;
     }
 
