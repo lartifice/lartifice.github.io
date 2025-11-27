@@ -41,7 +41,7 @@
       justify-content: center;
     }
 
-    /* STYLE TÉLÉTEXTE */
+    /* STYLE TÉLÉTEXTE DESCRIPTION */
     .about {
       font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
       font-size: 0.72rem;
@@ -63,7 +63,6 @@
 
     li {
       margin: 14px 0;
-      position: relative; /* pour positionner le status au-dessus sans bouger le reste */
     }
 
     /* MENU STYLE TÉLÉTEXTE */
@@ -77,38 +76,41 @@
       cursor: pointer;
     }
 
-    /* ASTERISK PETITE, EN HAUT, PLACE RESERVÉE */
-    .asterisk {
-      display: inline-block;
-      width: 0.6em;          /* réserve un peu de place pour éviter tout décalage */
-      opacity: 0;
-      transition: opacity 0.15s ease;
-      font-family: ui-monospace, monospace;
-      font-size: 0.7em;      /* plus petite */
-      vertical-align: super; /* en haut */
+    /* WRAPPER DU MESSAGE CLIPBOARD – HAUTEUR FIXE, NE BOUGE PAS LE MENU */
+    .status-wrapper {
+      height: 1.2em;              /* réserve l'espace tout le temps */
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
     }
 
-    a:hover .asterisk {
-      opacity: 1;
-    }
-
-    /* MESSAGE COPIED TO CLIPBOARD – ABSOLU AU-DESSUS DE CONTACT */
     .status {
-      position: absolute;
-      bottom: 100%;          /* juste au-dessus du li */
-      left: 50%;
-      transform: translateX(-50%);
       font-size: 0.85rem;
       font-style: italic;
       text-transform: lowercase;
       white-space: nowrap;
+      opacity: 0;
       transition: opacity 0.4s ease;
       pointer-events: none;
-      opacity: 0;
     }
 
     .no-italic {
       font-style: normal;
+    }
+
+    /* ASTERISK PETIT, EN HAUT, SANS DÉPLACER LE TEXTE */
+    .asterisk {
+      display: inline-block;
+      width: 0.6em;               /* réserve un chouïa de place */
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      font-family: ui-monospace, monospace;
+      font-size: 0.7em;           /* petite */
+      vertical-align: super;      /* en haut */
+    }
+
+    a:hover .asterisk {
+      opacity: 1;
     }
   </style>
 </head>
@@ -127,7 +129,9 @@
 
     <ul>
       <li>
-        <div id="copy-status" class="status"></div>
+        <div class="status-wrapper">
+          <div id="copy-status" class="status"></div>
+        </div>
         <a id="contact-link">
           <span class="label">Contact</span><span class="asterisk">*</span>
         </a>
@@ -194,9 +198,6 @@
 
           setTimeout(() => {
             status.style.opacity = 0;
-            setTimeout(() => {
-              status.textContent = "";
-            }, 400);
           }, 5000);
         }
       });
