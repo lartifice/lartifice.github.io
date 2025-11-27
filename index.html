@@ -28,7 +28,6 @@
       cursor: pointer;
     }
 
-    /* ZONE RÉSERVÉE POUR LE TEXTE SOUS LE GIF */
     .about-wrapper {
       height: 80px;
       display: flex;
@@ -70,18 +69,17 @@
       text-decoration: underline;
     }
 
-    /* MESSAGE COPIED TO CLIPBOARD – collé juste au-dessus de CONTACT */
+    /* maintenant placé JUSTE AU-DESSUS de CONTACT */
     .status {
-      margin-top: 0px;
-      margin-bottom: 4px; /* petit espace, collé à CONTACT */
+      margin-bottom: 4px;
       font-size: 0.85rem;
       font-style: italic;
       text-transform: lowercase;
       min-height: 1.2em;
       transition: opacity 0.4s ease;
+      pointer-events: none;
     }
 
-    /* l'email en non-italique */
     .no-italic {
       font-style: normal;
     }
@@ -91,6 +89,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="container">
@@ -103,10 +102,10 @@
       </p>
     </div>
 
-    <div id="copy-status" class="status"></div>
-
     <ul>
       <li>
+        <!-- MESSAGE collé à CONTACT -->
+        <div id="copy-status" class="status"></div>
         <a id="contact-link">Contact</a>
       </li>
 
@@ -127,13 +126,13 @@
       const status = document.getElementById("copy-status");
 
       const colors = [
-        "#ffff00", // jaune néon
-        "#00ffff", // cyan
-        "#ff00ff", // magenta
-        "#39ff14", // vert néon
-        "#ff3131", // rouge néon
-        "#ff6ec7", // rose rétro
-        "#1f51ff"  // bleu rétro fluo
+        "#ffff00",
+        "#00ffff",
+        "#ff00ff",
+        "#39ff14",
+        "#ff3131",
+        "#ff6ec7",
+        "#1f51ff"
       ];
 
       let lastColor = null;
@@ -166,7 +165,8 @@
           status.style.opacity = 1;
           status.style.color = randomColor();
           status.innerHTML =
-"<span class='no-italic'>𝐥.𝐚𝐫𝐭𝐢𝐟𝐢𝐜𝐞@𝐩𝐫𝐨𝐭𝐨𝐧𝐦𝐚𝐢𝐥.𝐜𝐨𝐦</span> – 𝐜𝐨𝐩𝐢𝐞𝐝 𝐭𝐨 𝐜𝐥𝐢𝐩𝐛𝐨𝐚𝐫𝐝 <img src='lettre.png' style='height:18px; vertical-align:middle; margin-left:6px;' />";
+            "<span class='no-italic'>𝐥.𝐚𝐫𝐭𝐢𝐟𝐢𝐜𝐞@𝐩𝐫𝐨𝐭𝐨𝐧𝐦𝐚𝐢𝐥.𝐜𝐨𝐦</span> – 𝐜𝐨𝐩𝐢𝐞𝐝 𝐭𝐨 𝐜𝐥𝐢𝐩𝐛𝐨𝐚𝐫𝐝 <span class='emoji'>✉</span>";
+
           setTimeout(() => {
             status.style.opacity = 0;
             setTimeout(() => {
@@ -177,8 +177,7 @@
         }
       });
 
-      // ----- TEXTE ABOUT : hover + click toggle -----
-
+      /* ABOUT : hover + click sur le GIF */
       const gif = document.getElementById("artifice-gif");
       const about = document.getElementById("about-text");
 
