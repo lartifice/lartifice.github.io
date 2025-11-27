@@ -4,6 +4,11 @@
   <meta charset="utf-8">
   <title>L'ARTIFICE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
   <style>
     body {
       margin: 0;
@@ -40,7 +45,7 @@
     .about {
       font-family: "Courier New", Courier, ui-monospace, monospace;
       font-size: 0.8rem;
-      font-style: normal;  /* plus italique */
+      font-style: normal;
       font-weight: 400;
       line-height: 1.35;
       letter-spacing: -0.02em;
@@ -104,7 +109,6 @@
 
     <ul>
       <li>
-        <!-- MESSAGE collé à CONTACT -->
         <div id="copy-status" class="status"></div>
         <a id="contact-link">Contact</a>
       </li>
@@ -178,8 +182,7 @@
         }
       });
 
-      // ----- TEXTE ABOUT : hover + click toggle (desktop) / click only (mobile) -----
-
+      /* ABOUT : hover + click toggle (desktop) / click only (mobile) */
       const gif = document.getElementById("artifice-gif");
       const about = document.getElementById("about-text");
 
@@ -199,7 +202,6 @@
         }
       }
 
-      // Hover uniquement si pas écran tactile
       if (!hasTouch) {
         gif.addEventListener("mouseenter", function () {
           isHoveringGif = true;
@@ -212,7 +214,6 @@
         });
       }
 
-      // Clic : toggle partout (desktop + mobile)
       gif.addEventListener("click", function () {
         aboutPinned = !aboutPinned;
         updateAboutVisibility();
