@@ -36,11 +36,11 @@
       justify-content: center;
     }
 
-    /* >>> TYPO TYPEWRITER / COURIER <<< */
+    /* TYPEWRITER, NON ITALIQUE */
     .about {
       font-family: "Courier New", Courier, ui-monospace, monospace;
       font-size: 0.8rem;
-      font-style: italic;
+      font-style: normal;  /* plus italique */
       font-weight: 400;
       line-height: 1.35;
       letter-spacing: -0.02em;
@@ -165,7 +165,8 @@
           status.style.opacity = 1;
           status.style.color = randomColor();
           status.innerHTML =
-            "<span class='no-italic'>𝐥.𝐚𝐫𝐭𝐢𝐟𝐢𝐜𝐞@𝐩𝐫𝐨𝐭𝐨𝐧𝐦𝐚𝐢𝐥.𝐜𝐨𝐦</span> – 𝐜𝐨𝐩𝐢𝐞𝐝 𝐭𝐨 𝐜𝐥𝐢𝐩𝐛𝐨𝐚𝐫𝐝 <img src='lettre1.png' style='height:18px; vertical-align:middle; margin-left:6px; position:relative; top:3px;' />";
+            "<span class='no-italic'>𝐥.𝐚𝐫𝐭𝐢𝐟𝐢𝐜𝐞@𝐩𝐫𝐨𝐭𝐨𝐧𝐧𝐚𝐢𝐥.𝐜𝐨𝐦</span> – 𝐜𝐨𝐩𝐢𝐞𝐝 𝐭𝐨 𝐜𝐥𝐢𝐩𝐛𝐨𝐚𝐫𝐝 " +
+            "<img src='lettre1.png' style='height:18px; vertical-align:middle; margin-left:6px; position:relative; top:3px;' />";
 
           setTimeout(() => {
             status.style.opacity = 0;
@@ -177,7 +178,7 @@
         }
       });
 
-      // ----- TEXTE ABOUT : hover + click toggle -----
+      // ----- TEXTE ABOUT : hover + click toggle (desktop) / click only (mobile) -----
 
       const gif = document.getElementById("artifice-gif");
       const about = document.getElementById("about-text");
@@ -185,24 +186,33 @@
       let aboutPinned = false;
       let isHoveringGif = false;
 
+      const hasTouch =
+        "ontouchstart" in window ||
+        (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) ||
+        (navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 0);
+
       function updateAboutVisibility() {
-        if (aboutPinned || isHoveringGif) {
+        if (aboutPinned || (!hasTouch && isHoveringGif)) {
           about.style.opacity = 1;
         } else {
           about.style.opacity = 0;
         }
       }
 
-      gif.addEventListener("mouseenter", function () {
-        isHoveringGif = true;
-        updateAboutVisibility();
-      });
+      // Hover uniquement si pas écran tactile
+      if (!hasTouch) {
+        gif.addEventListener("mouseenter", function () {
+          isHoveringGif = true;
+          updateAboutVisibility();
+        });
 
-      gif.addEventListener("mouseleave", function () {
-        isHoveringGif = false;
-        updateAboutVisibility();
-      });
+        gif.addEventListener("mouseleave", function () {
+          isHoveringGif = false;
+          updateAboutVisibility();
+        });
+      }
 
+      // Clic : toggle partout (desktop + mobile)
       gif.addEventListener("click", function () {
         aboutPinned = !aboutPinned;
         updateAboutVisibility();
