@@ -22,13 +22,14 @@
       max-width: 520px;
     }
 
+    /* image (emoji lettre) */
     img {
-      max-width: 280px;
+      width: 90px;
       margin-bottom: 8px;
       cursor: pointer;
     }
 
-    /* ZONE RÉSERVÉE POUR LE TEXTE */
+    /* ZONE RÉSERVÉE POUR LE TEXTE SOUS L’IMAGE */
     .about-wrapper {
       height: 80px;
       display: flex;
@@ -64,147 +65,4 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       cursor: pointer;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    /* MESSAGE COPIED TO CLIPBOARD (juste AU-DESSUS de CONTACT) */
-    .status {
-      margin-top: 0px;
-      margin-bottom: 30px;
-      font-size: 0.85rem;
-      font-style: italic;
-      text-transform: lowercase;
-      min-height: 1.2em;
-      transition: opacity 0.4s ease;
-    }
-
-    .emoji {
-      font-style: normal;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="container">
-
-    <img id="artifice-gif" src="lartifice.gif" alt="Feu d’artifice">
-
-    <div class="about-wrapper">
-      <p class="about" id="about-text">
-        L’ARTIFICE is a Geneva-based association for independent cinema, offering support for film projects and accessible post-production services (editing and color grading).
-      </p>
-    </div>
-
-    <div id="copy-status" class="status"></div>
-
-    <ul>
-      <li>
-        <a id="contact-link">Contact</a>
-      </li>
-
-      <li>
-        <a href="https://www.swissfilms.ch/fr/company/l-artifice/c49ac503a7e94294bfc9ea440084433c"
-           target="_blank" rel="noopener noreferrer">
-          Films
-        </a>
-      </li>
-    </ul>
-
-  </div>
-
-  <script>
-    (function () {
-      const email = "l.artifice@protonmail.com";
-      const contactLink = document.getElementById("contact-link");
-      const status = document.getElementById("copy-status");
-
-      const colors = [
-        "#ffff00",
-        "#00ffff",
-        "#ff00ff",
-        "#39ff14",
-        "#ff3131",
-        "#ff6ec7",
-        "#1f51ff"
-      ];
-
-      let lastColor = null;
-
-      function randomColor() {
-        let newColor = colors[Math.floor(Math.random() * colors.length)];
-        while (newColor === lastColor) {
-          newColor = colors[Math.floor(Math.random() * colors.length)];
-        }
-        lastColor = newColor;
-        return newColor;
-      }
-
-      contactLink.addEventListener("click", function (e) {
-        e.preventDefault();
-
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(email).then(showMessage).catch(showMessage);
-        } else {
-          const tempInput = document.createElement("input");
-          tempInput.value = email;
-          document.body.appendChild(tempInput);
-          tempInput.select();
-          try { document.execCommand("copy"); } catch(e){}
-          document.body.removeChild(tempInput);
-          showMessage();
-        }
-
-        function showMessage() {
-          status.style.opacity = 1;
-          status.style.color = randomColor();
-          status.innerHTML =
-            "𝐥.𝐚𝐫𝐭𝐢𝐟𝐢𝐜𝐞@𝐩𝐫𝐨𝐭𝐨𝐧𝐦𝐚𝐢𝐥.𝐜𝐨𝐦 – 𝐜𝐨𝐩𝐢𝐞𝐝 𝐭𝐨 𝐜𝐥𝐢𝐩𝐛𝐨𝐚𝐫𝐝 <span class='emoji'>📫</span>";
-
-          setTimeout(() => {
-            status.style.opacity = 0;
-            setTimeout(() => {
-              status.textContent = "";
-              status.style.opacity = 1;
-            }, 400);
-          }, 5000);
-        }
-      });
-
-      // ----- TEXTE ABOUT : hover + click toggle -----
-
-      const gif = document.getElementById("artifice-gif");
-      const about = document.getElementById("about-text");
-
-      let aboutPinned = false;
-      let isHoveringGif = false;
-
-      function updateAboutVisibility() {
-        if (aboutPinned || isHoveringGif) {
-          about.style.opacity = 1;
-        } else {
-          about.style.opacity = 0;
-        }
-      }
-
-      gif.addEventListener("mouseenter", function () {
-        isHoveringGif = true;
-        updateAboutVisibility();
-      });
-
-      gif.addEventListener("mouseleave", function () {
-        isHoveringGif = false;
-        updateAboutVisibility();
-      });
-
-      gif.addEventListener("click", function () {
-        aboutPinned = !aboutPinned;
-        updateAboutVisibility();
-      });
-    })();
-  </script>
-
-</body>
-</html>
+   
