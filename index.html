@@ -67,7 +67,6 @@
 
     /* MENU STYLE TÉLÉTEXTE */
     a {
-      position: relative;
       text-decoration: none;
       color: #ededed;
       font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
@@ -77,20 +76,17 @@
       cursor: pointer;
     }
 
-    /* ASTERISK EN POSITION ABSOLUE = PAS DE DEPLACEMENT */
-    a::after {
-      content: "*";
-      position: absolute;
-      right: -18px;
-      top: 50%;
-      transform: translateY(-50%);
+    /* ASTERISK FIXE, SANS DÉPLACER LE TEXTE */
+    .asterisk {
+      display: inline-block;
+      width: 0.9em;           /* réserve la place */
       opacity: 0;
       transition: opacity 0.15s ease;
       font-family: ui-monospace, monospace;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
     }
 
-    a:hover::after {
+    a:hover .asterisk {
       opacity: 1;
     }
 
@@ -126,13 +122,15 @@
     <ul>
       <li>
         <div id="copy-status" class="status"></div>
-        <a id="contact-link">Contact</a>
+        <a id="contact-link">
+          <span class="label">Contact</span><span class="asterisk">*</span>
+        </a>
       </li>
 
       <li>
         <a href="https://www.swissfilms.ch/fr/company/l-artifice/c49ac503a7e94294bfc9ea440084433c"
            target="_blank" rel="noopener noreferrer">
-          Films
+          <span class="label">Films</span><span class="asterisk">*</span>
         </a>
       </li>
     </ul>
