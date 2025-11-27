@@ -70,7 +70,7 @@
       text-decoration: underline;
     }
 
-    /* MESSAGE COPIED TO CLIPBOARD – collé juste au-dessus de CONTACT */
+    /* MESSAGE COPIED TO CLIPBOARD – juste au-dessus de CONTACT */
     .status {
       margin-bottom: 4px;
       font-size: 0.85rem;
@@ -81,7 +81,6 @@
       pointer-events: none;
     }
 
-    /* l'email en non-italique */
     .no-italic {
       font-style: normal;
     }
@@ -162,7 +161,7 @@
           status.style.opacity = 1;
           status.style.color = randomColor();
           status.innerHTML =
-            "<span class='no-italic'>𝐥.𝐚𝐫𝐭𝐢𝐟𝐢𝐜𝐞@𝐩𝐫𝐨𝐭𝐨𝐧𝐦𝐚𝐢𝐥.𝐜𝐨𝐦</span> – 𝐜𝐨𝐩𝐢𝐞𝐝 𝐭𝐨 𝐜𝐥𝐢𝐩𝐛𝐨𝐚𝐫𝐝 <img src='lettre1.png' style='height:18px; vertical-align:middle; margin-left:6px;' />";
+            "<span class='no-italic'>𝐥.𝐚𝐫𝐭𝐢𝐟𝐢𝐜𝐞@𝐩𝐫𝐨𝐭𝐨𝐧𝐦𝐚𝐢𝐥.𝐜𝐨𝐦</span> – 𝐜𝐨𝐩𝐢𝐞𝐝 𝐭𝐨 𝐜𝐥𝐢𝐩𝐛𝐨𝐚𝐫𝐝 <img src='lettre2.png' style='height:18px; vertical-align:middle; margin-left:6px; position:relative; top:3px;' />";
 
           setTimeout(() => {
             status.style.opacity = 0;
