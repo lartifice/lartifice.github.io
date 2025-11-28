@@ -99,15 +99,16 @@
     }
 
     /* ASTERISK PETIT, EN HAUT, SANS DÉPLACER LE TEXTE */
-    .asterisk {
+.asterisk {
   display: inline-block;
-  width: 0.6em;   
+  width: 0.9em;          /* un peu plus d’air avec le mot */
   opacity: 0;
   transition: opacity 0.15s ease;
   font-family: ui-monospace, monospace;
-  font-size: 1em;          /* taille normale */
-  vertical-align: middle;  /* centré verticalement */
+  font-size: 0.8em;       /* un peu plus petit */
+  vertical-align: -1px;   /* micro ajuste vers le bas (plus centré optiquement) */
 }
+
 
 
     a:hover .asterisk {
