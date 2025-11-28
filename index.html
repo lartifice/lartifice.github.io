@@ -100,14 +100,15 @@
 
     /* ASTERISK PETIT, EN HAUT, SANS DÉPLACER LE TEXTE */
     .asterisk {
-      display: inline-block;
-      width: 0.6em;               /* réserve un chouïa de place */
-      opacity: 0;
-      transition: opacity 0.15s ease;
-      font-family: ui-monospace, monospace;
-      font-size: 0.7em;           /* petite */
-      vertical-align: super;      /* en haut */
-    }
+  display: inline-block;
+  width: 0.6em;   
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  font-family: ui-monospace, monospace;
+  font-size: 1em;          /* taille normale */
+  vertical-align: middle;  /* centré verticalement */
+}
+
 
     a:hover .asterisk {
       opacity: 1;
