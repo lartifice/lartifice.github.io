@@ -84,7 +84,7 @@
       cursor: pointer;
     }
 
-    /* ASTERISK PARFAITEMENT CENTRÉ & PLUS PETIT */
+    /* ASTERISK */
     .asterisk {
       position: absolute;
       right: -15px;
@@ -170,6 +170,21 @@
       margin: 0 0 14px 0;
     }
 
+    /* TITRES CLIQUABLES DE NOS FILMS */
+    .film-title {
+      font-family: inherit;
+      font-size: inherit;
+      letter-spacing: inherit;
+      text-transform: none;
+      color: #bdbdbd;
+      text-decoration: none;
+    }
+
+    .film-title:hover {
+      color: #ededed;
+    }
+
+    /* MOBILE */
     @media (max-width: 700px) {
       .container {
         padding: 24px;
@@ -199,6 +214,7 @@
       </div>
 
       <ul>
+
         <li>
           <div class="status-wrapper">
             <div id="copy-status" class="status"></div>
@@ -216,78 +232,120 @@
             <span class="asterisk">*</span>
           </a>
         </li>
+
       </ul>
 
     </div>
 
+
+    <!-- FILMS -->
+
     <div id="films-section" class="films-section">
+
+      <!-- OUR FILMS -->
 
       <div class="films-column">
 
         <h2>Our films</h2>
 
-        <p>SMALL TALK (2026) — Locarno</p>
+        <p>
+          <a class="film-title"
+             href="https://www.swissfilms.ch/fr/movie/small-talk/0d6310c1a6b84d6187a78304e928b844"
+             target="_blank"
+             rel="noopener noreferrer">
+            <strong>Small Talk</strong>
+          </a>
+          — Locarno (2026)
+        </p>
 
-        <p>SUMMER CAMP (2025) — Rotterdam</p>
+        <p>
+          <a class="film-title"
+             href="https://www.swissfilms.ch/fr/movie/camp-d-ete/e96191c0924c4f9399a7d2d9874f8a97"
+             target="_blank"
+             rel="noopener noreferrer">
+            <strong>Camp d’été</strong>
+          </a>
+          — Rotterdam (2025)
+        </p>
 
-        <p>OVER OUR HILLS (2022) — Ji.hlava</p>
+        <p>
+          <a class="film-title"
+             href="https://www.swissfilms.ch/fr/movie/sur-nos-monts/8068681f69fd401ea9a049bad4943fb8"
+             target="_blank"
+             rel="noopener noreferrer">
+            <strong>Sur nos monts</strong>
+          </a>
+          — Ji.hlava (2022)
+        </p>
 
-        <p>LUX (2021) — Thessaloniki</p>
+        <p>
+          <a class="film-title"
+             href="https://www.swissfilms.ch/fr/movie/lux/d093037decac4952bcd31ba3df0a9dc6"
+             target="_blank"
+             rel="noopener noreferrer">
+            <strong>LUX</strong>
+          </a>
+          — Thessaloniki (2021)
+        </p>
 
       </div>
 
+
+      <!-- FILMS WE SUPPORTED -->
 
       <div class="films-column">
 
         <h2>Films we supported</h2>
 
         <p>
-          Virages by Céline Carridroit &amp; Aline Sutter — ACID 2026
+          <strong>Virages</strong> by Céline Carridroit &amp; Aline Sutter — ACID (2026)
         </p>
 
         <p>
-          Colostrum by Sayaka Mizuno — Visions du Réel 2025
+          <strong>Colostrum</strong> by Sayaka Mizuno — Visions du Réel (2025)
         </p>
 
         <p>
-          Regardez l’Arbre by Antonin Ivanidzé — FID Marseille 2025
+          <strong>Regardez l’Arbre</strong> by Antonin Ivanidzé — FID Marseille (2025)
         </p>
 
         <p>
-          La Beauté de l’Âne by Dea Gjinovci — Zurich Film Festival 2025
+          <strong>La Beauté de l’Âne</strong> by Dea Gjinovci — Zurich Film Festival (2025)
         </p>
 
         <p>
-          Reinas by Klaudia Reynicke — Sundance 2024
+          <strong>Reinas</strong> by Klaudia Reynicke — Sundance (2024)
         </p>
 
         <p>
-          L’Amour du monde by Jenna Hasse — Berlinale 2023, Special Mention
+          <strong>L’Amour du monde</strong> by Jenna Hasse — Berlinale, Special Mention (2023)
         </p>
 
         <p>
-          L’Îlot by Tizian Büchi — Grand Prix, Visions du Réel 2022
+          <strong>L’Îlot</strong> by Tizian Büchi — Visions du Réel, Grand Prix (2022)
         </p>
 
         <p>
-          Flores del Otro Patio by Jorge Cadena — Winterthur 2022, SXSW 2023
+          <strong>Flores del Otro Patio</strong> by Jorge Cadena — Winterthur (2022), SXSW (2023)
         </p>
 
         <p>
-          Assigné by Aude Sublet — Huesca 2025
+          <strong>Assigné</strong> by Aude Sublet — Huesca (2025)
         </p>
 
         <p>
-          Initial by Hugo Radi — Visions du Réel 2022
+          <strong>Initial</strong> by Hugo Radi — Visions du Réel (2022)
         </p>
 
         <p>
-          Fuku Nashi by Julie Sando — National Award, Visions du Réel; Best Short Film, RIDM
+          <strong>Fuku Nashi</strong> by Julie Sando — Visions du Réel, National Award; RIDM, Best Short Film
         </p>
 
         <p>
-          And How Miserable Is The Home Of Evil by Saleh Kashefi — Visions du Réel 2023, Glasgow &amp; Go Short 2024
+          <strong>And How Miserable Is The Home Of Evil</strong> by Saleh Kashefi — Visions du Réel (2023), Glasgow &amp; Go Short (2024)
         </p>
+
+        <p>...</p>
 
       </div>
 
@@ -295,8 +353,11 @@
 
   </div>
 
+
   <script>
     (function () {
+
+      /* CONTACT */
 
       const email = "l.artifice@protonmail.com";
       const contactLink = document.getElementById("contact-link");
@@ -315,17 +376,23 @@
       let lastColor = null;
 
       function randomColor() {
-        let newColor = colors[Math.floor(Math.random() * colors.length)];
+
+        let newColor =
+          colors[Math.floor(Math.random() * colors.length)];
 
         while (newColor === lastColor) {
-          newColor = colors[Math.floor(Math.random() * colors.length)];
+          newColor =
+            colors[Math.floor(Math.random() * colors.length)];
         }
 
         lastColor = newColor;
+
         return newColor;
       }
 
+
       contactLink.addEventListener("click", function (e) {
+
         e.preventDefault();
 
         if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -337,9 +404,11 @@
 
         } else {
 
-          const tempInput = document.createElement("input");
+          const tempInput =
+            document.createElement("input");
 
           tempInput.value = email;
+
           document.body.appendChild(tempInput);
 
           tempInput.select();
@@ -352,6 +421,7 @@
 
           showMessage();
         }
+
 
         function showMessage() {
 
@@ -366,77 +436,126 @@
             status.style.opacity = 0;
           }, 5000);
         }
+
       });
 
 
       /* ABOUT : hover + click toggle */
 
-      const gif = document.getElementById("artifice-gif");
-      const about = document.getElementById("about-text");
+      const gif =
+        document.getElementById("artifice-gif");
+
+      const about =
+        document.getElementById("about-text");
 
       let aboutPinned = false;
       let isHoveringGif = false;
 
       const hasTouch =
         "ontouchstart" in window ||
-        (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) ||
-        (navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 0);
+        (navigator.maxTouchPoints &&
+         navigator.maxTouchPoints > 0) ||
+        (navigator.msMaxTouchPoints &&
+         navigator.msMaxTouchPoints > 0);
+
 
       function updateAboutVisibility() {
 
-        if (aboutPinned || (!hasTouch && isHoveringGif)) {
+        if (
+          aboutPinned ||
+          (!hasTouch && isHoveringGif)
+        ) {
+
           about.style.opacity = 1;
+
         } else {
+
           about.style.opacity = 0;
+
         }
       }
 
+
       if (!hasTouch) {
 
-        gif.addEventListener("mouseenter", function () {
-          isHoveringGif = true;
-          updateAboutVisibility();
-        });
+        gif.addEventListener(
+          "mouseenter",
+          function () {
 
-        gif.addEventListener("mouseleave", function () {
-          isHoveringGif = false;
-          updateAboutVisibility();
-        });
+            isHoveringGif = true;
+
+            updateAboutVisibility();
+
+          }
+        );
+
+
+        gif.addEventListener(
+          "mouseleave",
+          function () {
+
+            isHoveringGif = false;
+
+            updateAboutVisibility();
+
+          }
+        );
+
       }
 
-      gif.addEventListener("click", function () {
-        aboutPinned = !aboutPinned;
-        updateAboutVisibility();
-      });
+
+      gif.addEventListener(
+        "click",
+        function () {
+
+          aboutPinned = !aboutPinned;
+
+          updateAboutVisibility();
+
+        }
+      );
 
 
       /* FILMS : apparition / disparition */
 
-      const filmsLink = document.getElementById("films-link");
-      const filmsSection = document.getElementById("films-section");
+      const filmsLink =
+        document.getElementById("films-link");
 
-      filmsLink.addEventListener("click", function (e) {
+      const filmsSection =
+        document.getElementById("films-section");
 
-        e.preventDefault();
 
-        const isOpening =
-          !filmsSection.classList.contains("visible");
+      filmsLink.addEventListener(
+        "click",
+        function (e) {
 
-        filmsSection.classList.toggle("visible");
+          e.preventDefault();
 
-        if (isOpening) {
+          const isOpening =
+            !filmsSection.classList.contains(
+              "visible"
+            );
 
-          setTimeout(function () {
+          filmsSection.classList.toggle(
+            "visible"
+          );
 
-            filmsSection.scrollIntoView({
-              behavior: "smooth",
-              block: "start"
-            });
 
-          }, 150);
+          if (isOpening) {
+
+            setTimeout(function () {
+
+              filmsSection.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+              });
+
+            }, 150);
+
+          }
 
         }
-      });
+      );
 
     })();
   </script>
