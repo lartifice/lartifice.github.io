@@ -24,7 +24,14 @@
     .container {
       text-align: center;
       padding: 32px;
+      width: 100%;
+      max-width: 1000px;
+      box-sizing: border-box;
+    }
+
+    .main-content {
       max-width: 520px;
+      margin: 0 auto;
     }
 
     img {
@@ -80,13 +87,13 @@
     /* ASTERISK PARFAITEMENT CENTRÉ & PLUS PETIT */
     .asterisk {
       position: absolute;
-      right: -15px;              /* ajustable si besoin */
+      right: -15px;
       top: 50%;
       transform: translateY(-50%);
       opacity: 0;
       transition: opacity 0.15s ease;
       font-family: ui-monospace, monospace;
-      font-size: 0.66em;          /* environ moitié de la taille */
+      font-size: 0.66em;
       line-height: 1;
     }
 
@@ -94,7 +101,7 @@
       opacity: 1;
     }
 
-    /* ZONE FIXE POUR MESSAGE CLIPBOARD (ne bouge jamais le menu) */
+    /* ZONE FIXE POUR MESSAGE CLIPBOARD */
     .status-wrapper {
       height: 1.3em;
       display: flex;
@@ -115,6 +122,65 @@
     .no-italic {
       font-style: normal;
     }
+
+    /* FILMS */
+
+    .films-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      text-align: left;
+
+      margin: 70px auto 0 auto;
+      width: 100%;
+
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.72rem;
+      line-height: 1.45;
+      letter-spacing: 0.02em;
+      color: #bdbdbd;
+
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      pointer-events: none;
+
+      transition:
+        opacity 2s ease,
+        max-height 2s ease;
+    }
+
+    .films-section.visible {
+      opacity: 1;
+      max-height: 2500px;
+      pointer-events: auto;
+    }
+
+    .films-column h2 {
+      margin: 0 0 26px 0;
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.8rem;
+      font-weight: normal;
+      color: #ededed;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .films-column p {
+      margin: 0 0 14px 0;
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        padding: 24px;
+      }
+
+      .films-section {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        margin-top: 60px;
+      }
+    }
   </style>
 </head>
 
@@ -122,39 +188,116 @@
 
   <div class="container">
 
-    <img id="artifice-gif" src="lartifice.gif" alt="Feu d’artifice">
+    <div class="main-content">
 
-    <div class="about-wrapper">
-      <p class="about" id="about-text">
-        L’ARTIFICE is a Geneva-based association for independent cinema, offering support for film projects and accessible post-production services (editing and color grading).
-      </p>
+      <img id="artifice-gif" src="lartifice.gif" alt="Feu d’artifice">
+
+      <div class="about-wrapper">
+        <p class="about" id="about-text">
+          L’ARTIFICE is a Geneva-based association for independent cinema, offering support for film projects and accessible post-production services (editing and color grading).
+        </p>
+      </div>
+
+      <ul>
+        <li>
+          <div class="status-wrapper">
+            <div id="copy-status" class="status"></div>
+          </div>
+
+          <a id="contact-link">
+            <span>Contact</span>
+            <span class="asterisk">*</span>
+          </a>
+        </li>
+
+        <li>
+          <a id="films-link">
+            <span>Films</span>
+            <span class="asterisk">*</span>
+          </a>
+        </li>
+      </ul>
+
     </div>
 
-    <ul>
-      <li>
-        <div class="status-wrapper">
-          <div id="copy-status" class="status"></div>
-        </div>
+    <div id="films-section" class="films-section">
 
-        <a id="contact-link">
-          <span>Contact</span>
-          <span class="asterisk">*</span>
-        </a>
-      </li>
+      <div class="films-column">
 
-      <li>
-        <a href="https://www.swissfilms.ch/fr/company/l-artifice/c49ac503a7e94294bfc9ea440084433c"
-           target="_blank" rel="noopener noreferrer">
-          <span>Films</span>
-          <span class="asterisk">*</span>
-        </a>
-      </li>
-    </ul>
+        <h2>Our films</h2>
+
+        <p>SMALL TALK (2026) — Locarno</p>
+
+        <p>SUMMER CAMP (2025) — Rotterdam</p>
+
+        <p>OVER OUR HILLS (2022) — Ji.hlava</p>
+
+        <p>LUX (2021) — Thessaloniki</p>
+
+      </div>
+
+
+      <div class="films-column">
+
+        <h2>Films we supported</h2>
+
+        <p>
+          Virages by Céline Carridroit &amp; Aline Sutter — ACID 2026
+        </p>
+
+        <p>
+          Colostrum by Sayaka Mizuno — Visions du Réel 2025
+        </p>
+
+        <p>
+          Regardez l’Arbre by Antonin Ivanidzé — FID Marseille 2025
+        </p>
+
+        <p>
+          La Beauté de l’Âne by Dea Gjinovci — Zurich Film Festival 2025
+        </p>
+
+        <p>
+          Reinas by Klaudia Reynicke — Sundance 2024
+        </p>
+
+        <p>
+          L’Amour du monde by Jenna Hasse — Berlinale 2023, Special Mention
+        </p>
+
+        <p>
+          L’Îlot by Tizian Büchi — Grand Prix, Visions du Réel 2022
+        </p>
+
+        <p>
+          Flores del Otro Patio by Jorge Cadena — Winterthur 2022, SXSW 2023
+        </p>
+
+        <p>
+          Assigné by Aude Sublet — Huesca 2025
+        </p>
+
+        <p>
+          Initial by Hugo Radi — Visions du Réel 2022
+        </p>
+
+        <p>
+          Fuku Nashi by Julie Sando — National Award, Visions du Réel; Best Short Film, RIDM
+        </p>
+
+        <p>
+          And How Miserable Is The Home Of Evil by Saleh Kashefi — Visions du Réel 2023, Glasgow &amp; Go Short 2024
+        </p>
+
+      </div>
+
+    </div>
 
   </div>
 
   <script>
     (function () {
+
       const email = "l.artifice@protonmail.com";
       const contactLink = document.getElementById("contact-link");
       const status = document.getElementById("copy-status");
@@ -173,9 +316,11 @@
 
       function randomColor() {
         let newColor = colors[Math.floor(Math.random() * colors.length)];
+
         while (newColor === lastColor) {
           newColor = colors[Math.floor(Math.random() * colors.length)];
         }
+
         lastColor = newColor;
         return newColor;
       }
@@ -184,18 +329,32 @@
         e.preventDefault();
 
         if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(email).then(showMessage).catch(showMessage);
+
+          navigator.clipboard
+            .writeText(email)
+            .then(showMessage)
+            .catch(showMessage);
+
         } else {
+
           const tempInput = document.createElement("input");
+
           tempInput.value = email;
           document.body.appendChild(tempInput);
+
           tempInput.select();
-          try { document.execCommand("copy"); } catch(e){}
+
+          try {
+            document.execCommand("copy");
+          } catch(e) {}
+
           document.body.removeChild(tempInput);
+
           showMessage();
         }
 
         function showMessage() {
+
           status.style.color = randomColor();
           status.style.opacity = 1;
 
@@ -209,7 +368,9 @@
         }
       });
 
+
       /* ABOUT : hover + click toggle */
+
       const gif = document.getElementById("artifice-gif");
       const about = document.getElementById("about-text");
 
@@ -222,6 +383,7 @@
         (navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 0);
 
       function updateAboutVisibility() {
+
         if (aboutPinned || (!hasTouch && isHoveringGif)) {
           about.style.opacity = 1;
         } else {
@@ -230,6 +392,7 @@
       }
 
       if (!hasTouch) {
+
         gif.addEventListener("mouseenter", function () {
           isHoveringGif = true;
           updateAboutVisibility();
@@ -245,6 +408,36 @@
         aboutPinned = !aboutPinned;
         updateAboutVisibility();
       });
+
+
+      /* FILMS : apparition / disparition */
+
+      const filmsLink = document.getElementById("films-link");
+      const filmsSection = document.getElementById("films-section");
+
+      filmsLink.addEventListener("click", function (e) {
+
+        e.preventDefault();
+
+        const isOpening =
+          !filmsSection.classList.contains("visible");
+
+        filmsSection.classList.toggle("visible");
+
+        if (isOpening) {
+
+          setTimeout(function () {
+
+            filmsSection.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+
+          }, 150);
+
+        }
+      });
+
     })();
   </script>
 
